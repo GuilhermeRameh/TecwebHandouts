@@ -1,0 +1,333 @@
+/*
+Algumas informações úteis e dicas:
+  - Fontes disponíveis:
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Permanent Marker', cursive;
+  - Cores:
+    Tons de amarelo:
+      #e4fc2b
+      #e0d426
+      #f7d736
+      #e0af26
+      #fcb02b
+    Tons de cinza:
+      #2c2c2c
+      #4c4c4c
+    Cores dos cards:
+      #ead3a7
+      #9de0f5
+      #ef89ba
+      #fae890
+      #abe9c1
+  - Sombra: https://codepen.io/sdthornton/pen/wBZdXq
+ */
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  width: 99.3%;
+  display: flex;
+  flex-direction: column;
+  background-color: #3a3a3a;
+}
+.appbar {
+  display: flex;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  height: 3rem;
+  width: 100%;
+  background-color: #f7d736;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 4px 3px 8px 1px #969696;
+  border-bottom: solid 4px black;
+}
+.logo {
+  height: 3rem;
+}
+.subtitle {
+  padding: 10px;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 40%;
+  border-radius: 4px;
+  border: solid 3px black;
+  box-shadow: 4px 3px 8px 1px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  background-color: #4c4c4c;
+}
+
+.texto-container{
+  font-size: 1.5rem;
+  align-self: center;
+  margin: 0.15rem;
+  margin-bottom: 0.5rem;
+  font-family:'Bradley Hand', cursive;
+  color: #f7d736;
+}
+
+.form-card-title{
+  font-size: 1.1rem;
+  border: 0px;
+}
+.autoresize {
+  border: 0px;
+  height: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  resize: none  ;
+}
+.btn {
+  border-radius: 4px;
+  padding: 0.5rem;
+  border-width: 0px;
+  box-shadow: 1px 1px 6px 1px #969696;
+  background-color: #f7d736;
+}
+
+.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  justify-content:space-evenly;
+}
+
+.card{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.23);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  word-wrap: break-word;
+  width: 11rem;
+  height: 7rem;
+  margin: 0.6rem;
+  padding: 0.3rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: solid 2px gray;
+}
+
+.card-title{
+  font-family: 'Permanent Marker', cursive;
+  margin-bottom: 0.5rem;
+}
+
+.card-content{
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size:smaller;
+  color: #4c4c4c;
+}
+
+.edit-button:hover, .delete-button:hover{
+  background-color: rgba(17.25, 17.25, 17.25, 0.6);
+}
+
+.button-layout{
+  display: none;
+  flex-direction: row-reverse;
+}
+
+.edit-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.2rem;
+  background-color:rgba(17.25, 17.25, 17.25, 0.4);
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  cursor: pointer; /* Mouse pointer on hover */
+  margin-right: 0.2rem;
+}
+
+.delete-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.2rem;
+  background-color:rgba(17.25, 17.25, 17.25, 0.4);
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+.card:hover > .button-layout{
+  display: flex;
+}
+
+
+/* STYLE FOR POPUP WINDOW :) */
+
+.popup-window {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.window-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+.popup-title{
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.popup-content{
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.card-color-1{
+  background-color: #F17D4B
+}
+.card-color-2{
+  background-color: #FAFF62;
+}
+.card-color-3{
+  background-color: #F7D644;
+}
+.card-color-4{
+  background-color: #fae890;
+}
+.card-color-5{
+  background-color: #FFAE3B;
+}
+
+.card-rotation-1{
+  transform: rotate(0deg);
+}
+.card-rotation-2{
+  transform: rotate(1deg);
+}
+.card-rotation-3{
+  transform: rotate(2deg);
+}
+.card-rotation-4{
+  transform: rotate(3deg);
+}
+.card-rotation-5{
+  transform: rotate(4deg);
+}
+.card-rotation-6{
+  transform: rotate(5deg);
+}
+.card-rotation-7{
+  transform: rotate(-1deg);
+}
+.card-rotation-8{
+  transform: rotate(-2deg);
+}
+.card-rotation-9{
+  transform: rotate(-3deg);
+}
+.card-rotation-10{
+  transform: rotate(-4deg);
+}
+.card-rotation-11{
+  transform: rotate(-5deg);
+}
+
+
+
+/* Você pode usar o CSS comentado abaixo, se ajudar */
+/* Fonte: https://codepen.io/CrisWoler/pen/ogXBLj */
+/* .btn {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+  background-color: #f7d736;
+
+  transition: background-color 0.3s;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, 0.3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+} */
